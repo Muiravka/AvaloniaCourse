@@ -44,21 +44,19 @@
       <Button Classes="CustomButton" Content="Вход" HorizontalAlignment="Left" Width="120" HorizontalContentAlignment="Center" Margin="20 10 0 0" Command="{Binding AutorizationCommand}" CommandParameter="{Binding ElementName=UnautorizedWindow}"/>
       <Button Classes="CustomButton" Content="Регистрация" HorizontalAlignment="Left" Width="120" HorizontalContentAlignment="Center" Margin="20 10 0 0" Command="{Binding RegistrationCommand}" CommandParameter="{Binding ElementName=UnautorizedWindow}"/>
     </StackPanel>
-      <ItemsRepeater Items="{Binding Animes}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
-        <ItemsRepeater.Layout>
-          <StackLayout Spacing="40" Orientation="Horizontal"/>
-        </ItemsRepeater.Layout>
-        <ItemsRepeater.ItemTemplate>
+    <ListBox Items="{Binding Animes}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
+        <ListBox.ItemTemplate>
           <DataTemplate>
             <StackPanel Margin="5">
-              <Grid Width="90" Height="140">
-                <Image Source="/Assets/404.jpg" Stretch="UniformToFill"/>
+              <Grid Width="90" Height="140" Background="Black">
+                  <Image Source="{Binding image.Preview}" Stretch="UniformToFill"/>
               </Grid>
               <TextBlock Text="{Binding russian}" FontSize="15" Foreground="Orange"/>
               <TextBlock Text="{Binding score}" HorizontalAlignment="Center" Foreground="Yellow"/>
             </StackPanel>
           </DataTemplate>
-        </ItemsRepeater.ItemTemplate>
-      </ItemsRepeater>
+        </ListBox.ItemTemplate>
+      </ListBox>
+  
   </Grid>
 </Window>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace coursach.Models.ApiModels
@@ -36,21 +37,20 @@ namespace coursach.Models.ApiModels
 
         public class Images
         {
-            private string _original;
-
-            [JsonProperty("original")]
-            public string Original
+            private string? original;
+            [JsonPropertyName("original")]
+            public string Original 
             {
-                get => $"https://shikimori.one{_original}";
-                set => this._original = value;
+                get => $"https://shikimori.one{original}";
+                set => original = value; 
             }
-            private string _preview;
 
-            [JsonProperty("preview")]
-            public string Preview
-            {
-                get => $"https://shikimori.one{_preview}";
-                set => this._preview = value;
+            private string? preview;
+            [JsonPropertyName("preview")]
+            public string Preview 
+            { 
+                get => $"https://shikimori.one{preview}"; 
+                set => preview = value; 
             }
         }
     }
