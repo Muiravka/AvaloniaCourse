@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:coursach.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
+        x:Class="coursach.Views.Profile"
+        Title="Ваш профиль"
+        Icon="/Assets/logo.png"
+        WindowStartupLocation="CenterScreen"
+        x:Name="UserProfile">
+
+  <Design.DataContext>
+    <vm:ProfileVM/>
+  </Design.DataContext>
+
+  <Grid ShowGridLines="True">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1100"/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="90"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Image Source="/Assets/logo.png" HorizontalAlignment="Left"/>
+    <Button Command="{Binding ReturnToHome}" CommandParameter="{Binding ElementName=UserProfile}" Width="70" Height="70" Margin="20" Opacity="0"/>
+    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+      <TextBlock Text="Здравствуйте, " FontSize="30"/>
+      <TextBlock Text="{Binding Name}" FontSize="30"/>
+      <TextBlock Text="!" FontSize="30"/>
+    </StackPanel>
+    <Button Grid.Row="0" Grid.Column="1" Content="Выйти" Command="{Binding LogOut}" CommandParameter="{Binding ElementName=UserProfile}" HorizontalAlignment="Right" VerticalAlignment="Top" Opacity="1" Margin="30" Width="80" HorizontalContentAlignment="Center"/>
+    <TabControl Grid.Row="1" Grid.ColumnSpan="2">
+      <TabItem Header="Запланировано" VerticalContentAlignment="Center" Margin="10 0 0 0">
+        
+      </TabItem>
+      <TabItem Header="Просмотрено" VerticalContentAlignment="Center" Margin="150 0 0 0">
+        
+      </TabItem>
+      <TabItem Header="Брошено" VerticalContentAlignment="Center" Margin="150 0 0 0">
+        
+      </TabItem>
+    </TabControl>
+    
+  </Grid>
+</Window>

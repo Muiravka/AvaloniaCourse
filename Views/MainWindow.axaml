@@ -1,0 +1,64 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:coursach.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+        x:Class="coursach.Views.MainWindow"
+        Icon="/Assets/logo.png"
+        Title="Kuro" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
+        Background="{DynamicResource backgroundImage}"
+        WindowStartupLocation="CenterScreen"
+        x:Name="UnautorizedWindow">
+  <Window.Resources>
+    <ImageBrush Source="/Assets/voronagirl.png" x:Key="backgroundImage" Stretch="Fill"/>
+  </Window.Resources>
+
+  <Window.Styles>
+    <Style Selector="Button.CustomButton">
+      <Setter Property="Background" Value="LightGray"/>
+      <Setter Property="Opacity" Value="1"/>
+      <Setter Property="Foreground" Value="Black"/>
+    </Style>
+  </Window.Styles>
+
+    <Design.DataContext>
+        <vm:HomePageVM/>
+    </Design.DataContext>
+  
+  <Grid ShowGridLines="False" >
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1100"/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="90"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <StackPanel Orientation="Horizontal">
+      <Image Source="/Assets/logo.png"/>
+      <Image Source="/Assets/loop.png" HorizontalAlignment="Left" Grid.Row="0" Width="30" Margin="120 0 0 0"/>
+      <TextBox x:Name="SearchAnime" Watermark="Поиск..." Text="{Binding SearchString}" Grid.Row="0" Grid.Column="0" Width="800" Height="33" TextAlignment="Left" HorizontalAlignment="Left" Margin="11 0 0 0"/>
+    </StackPanel>
+    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+      <Button Classes="CustomButton" Content="Вход" HorizontalAlignment="Left" Width="120" HorizontalContentAlignment="Center" Margin="20 10 0 0" Command="{Binding AutorizationCommand}" CommandParameter="{Binding ElementName=UnautorizedWindow}"/>
+      <Button Classes="CustomButton" Content="Регистрация" HorizontalAlignment="Left" Width="120" HorizontalContentAlignment="Center" Margin="20 10 0 0" Command="{Binding RegistrationCommand}" CommandParameter="{Binding ElementName=UnautorizedWindow}"/>
+    </StackPanel>
+      <ItemsRepeater Items="{Binding Animes}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
+        <ItemsRepeater.Layout>
+          <StackLayout Spacing="40" Orientation="Horizontal"/>
+        </ItemsRepeater.Layout>
+        <ItemsRepeater.ItemTemplate>
+          <DataTemplate>
+            <StackPanel Margin="5">
+              <Grid Width="90" Height="140">
+                <Image Source="/Assets/404.jpg" Stretch="UniformToFill"/>
+              </Grid>
+              <TextBlock Text="{Binding russian}" FontSize="15" Foreground="Orange"/>
+              <TextBlock Text="{Binding score}" HorizontalAlignment="Center" Foreground="Yellow"/>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsRepeater.ItemTemplate>
+      </ItemsRepeater>
+  </Grid>
+</Window>

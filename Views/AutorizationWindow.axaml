@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="using:coursach.ViewModels"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"  MaxWidth="300" MinWidth="350" MaxHeight="450" MinHeight="400"
+        x:Class="coursach.Views.AutorizationWindow"
+        Title="Авторизация"
+        Icon="/Assets/logo.png"
+        x:Name="AutorizationWin"
+        WindowStartupLocation="CenterScreen">
+
+  <Window.Styles>
+    <Style Selector="Button.CustomButton">
+      <Setter Property="Background" Value="LightGray"/>
+      <Setter Property="Opacity" Value="1"/>
+      <Setter Property="Foreground" Value="Black"/>
+    </Style>
+  </Window.Styles>
+
+  <Design.DataContext>
+    <vm:AutorizationVM/>
+  </Design.DataContext>
+ 
+  <Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical" Margin="0 50 0 0">
+      <TextBox x:Name="Login" Watermark="Введите ваш логин" Text="{Binding UserLogin}" Margin="0 25 0 0" MinWidth="250" MaxWidth="250"/>
+      <TextBox x:Name="Password" Watermark="Введите ваш пароль" Text="{Binding UserPassword}" PasswordChar="$" Margin="0 15 0 0" MinWidth="250" MaxWidth="250"/>
+    </StackPanel>
+    <Button Classes="CustomButton" Command="{Binding AutorizationCancel}" CommandParameter="{Binding ElementName=AutorizationWin}" Content="Отмена" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" MinWidth="100" HorizontalContentAlignment="Center"/>
+    <Button Classes="CustomButton" Command="{Binding AutorizationAccept}" CommandParameter="{Binding ElementName=AutorizationWin}" Content="Подтверждение" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" MinWidth="100" HorizontalContentAlignment="Center"/>
+  </Grid>
+</Window>
