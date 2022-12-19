@@ -9,7 +9,10 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
-    <Folder Include="Views\CurrentContent\" />
+    <AvaloniaXaml Remove="Views\CurrentContent\**" />
+    <Compile Remove="Views\CurrentContent\**" />
+    <EmbeddedResource Remove="Views\CurrentContent\**" />
+    <None Remove="Views\CurrentContent\**" />
     <None Remove=".gitignore" />
   </ItemGroup>
 

@@ -61,13 +61,6 @@ namespace coursach.ViewModels
 
 
         #region Commands
-        public RelayCommand SearchCommand
-        {
-            get => new(() =>
-            {
-                Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page,SearchString));
-            });
-        }
         public RelayCommand<Window> RegistrationCommand
         {
             get => new(x =>
@@ -85,6 +78,14 @@ namespace coursach.ViewModels
                 var Autorization_Window = new AutorizationWindow();
                 Autorization_Window.Show();
                 x.Close();
+            });
+        }
+
+        public RelayCommand KeyEnterSearch
+        {
+            get => new(() =>
+            {
+                Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
             });
         }
         #endregion

@@ -68,6 +68,14 @@ namespace coursach.ViewModels
                 x.Close();
             });
         }
+        public RelayCommand KeyEnterSearch
+        {
+            get => new(() =>
+            {
+                Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+            });
+        }
+
         #endregion
     }
 }

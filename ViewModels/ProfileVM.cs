@@ -12,6 +12,8 @@ namespace coursach.ViewModels
 {
     public class ProfileVM
     {
+        private ShikiApi ShikiContext = new ShikiApi();
+        private CourseContext DbContext = new CourseContext();
         public ProfileVM() 
         {
 
