@@ -1,5 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
         xmlns:vm="using:coursach.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -53,7 +54,7 @@
             <StackPanel Margin="5">
               <TextBlock Text="{Binding score}" HorizontalAlignment="Center" Foreground="Yellow"/>
               <Grid Width="90" Height="140">
-                <Image Source="/Assets/404.jpg" Stretch="UniformToFill">
+                <Image asyncImageLoader:ImageLoader.Source="{Binding image.Preview}" Stretch="UniformToFill">
                   <Image.KeyBindings>
                     <KeyBinding Command="{Binding OpenAnimePage}"/>
                   </Image.KeyBindings>
