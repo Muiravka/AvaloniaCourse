@@ -50,7 +50,7 @@
       <Button Classes="CustomButton" Content="Регистрация" HorizontalAlignment="Left" Width="120" HorizontalContentAlignment="Center" Margin="20 10 0 0" Command="{Binding RegistrationCommand}" CommandParameter="{Binding ElementName=UnautorizedWindow}"/>
     </StackPanel>
     <ScrollViewer Name="scroller" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
-      <ItemsRepeater Items="{Binding Animes}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
+      <ItemsRepeater Items="{Binding Animes}" x:Name="animeList" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
         <ItemsRepeater.Layout>
           <StackLayout Spacing="40" Orientation="Horizontal"/>
         </ItemsRepeater.Layout>
@@ -61,7 +61,7 @@
               <Grid Width="90" Height="140" Background="White">
                 <Image asyncImageLoader:ImageLoader.Source="{Binding image.Preview}" Stretch="UniformToFill">
                   <Image.KeyBindings>
-                    <KeyBinding Command="{Binding OpenAnimePage}"/>
+                    <KeyBinding Command="{Binding OpenAnimePage}" CommandParameter="{Binding ElementName=animeList, Path=SelectedItem.Id}"/>
                   </Image.KeyBindings>
                 </Image>
               </Grid>

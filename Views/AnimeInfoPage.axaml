@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+        xmlns:vm="using:coursach.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
+        x:Class="coursach.Views.AnimeInfoPage"
+        Title="{Binding CurrentAnime.Russian}"
+        x:Name="AnimePage">
+
+  <Design.DataContext>
+    <vm:AnimeInfoPageVM/>
+  </Design.DataContext>
+
+  <Grid>
+    <Image asyncImageLoader:ImageLoader.Source="{Binding CurrentAnime.AnimeImage.Original}"/>
+  </Grid>
+  
+</Window>

@@ -88,6 +88,16 @@ namespace coursach.ViewModels
                 Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
             });
         }
+
+        public RelayCommand<Object> OpenAnimePage
+        {
+            get => new(obj =>
+            {
+                int id = Convert.ToInt32(obj);
+                AnimeInfoPage animePage = new AnimeInfoPage(id);
+                animePage.Show();
+            });
+        }
         #endregion
     }
 }
