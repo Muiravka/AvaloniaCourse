@@ -35,6 +35,12 @@ namespace coursach.ViewModels
             }
         }
 
+        private CurrentAnimeInfo? currentAnime;
+        public CurrentAnimeInfo CurrentAnime
+        {
+            get => currentAnime;
+        }
+
         private ObservableCollection<Anime>? _animes;
         public ObservableCollection<Anime> Animes
         {
@@ -94,7 +100,8 @@ namespace coursach.ViewModels
             get => new(obj =>
             {
                 int id = Convert.ToInt32(obj);
-                AnimeInfoPage animePage = new AnimeInfoPage(id);
+                currentAnime = context.GetAnimeInfo(id);
+                AnimeInfoPage animePage = new AnimeInfoPage(/*id*/);
                 animePage.Show();
             });
         }

@@ -14,9 +14,9 @@ namespace coursach.ViewModels
         {
             get => currentAnime;
         }
-        public AnimeInfoPageVM(int id) 
-        {
-            currentAnime = context.GetAnimeInfo(id);
-        }
+        //public AnimeInfoPageVM()
+        //{
+        //    currentAnime = context.GetAnimeInfo(currentAnime.id);
+        //}
     }
 }

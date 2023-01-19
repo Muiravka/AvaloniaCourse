@@ -44,7 +44,36 @@
       </TextBox>
       <Button Classes="CustomButton" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Content="В профиль" Width="150" Margin="50 30 0 0" Command="{Binding ReturnToProfile}" CommandParameter="{Binding ElementName=AutorizatedHome}"/>
     </StackPanel>
-    <ScrollViewer Name="scroller" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
+    <ListBox Classes="animes"
+    Grid.Row="1" Grid.ColumnSpan="2"
+    IsVisible="{Binding InitializationNotifier.IsCompleted, Mode=TwoWay}"
+    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+    Items="{Binding Animes}"
+    SelectedItem="{Binding SelectedAnime}" Opacity="0.96" OpacityMask="Blue">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <Grid ShowGridLines="True">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="Auto" MinHeight="48"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Stretch="UniformToFill" asyncImageLoader:ImageLoader.Source="{Binding image.Preview}"/>
+            <Border Grid.Row="1" Classes="title">
+              <Grid ColumnDefinitions="*, 0.4*" Margin="4">
+                <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap"/>
+                <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="Green"/>
+              </Grid>
+            </Border>
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+      <ListBox.ItemsPanel>
+        <ItemsPanelTemplate>
+          <WrapPanel ItemWidth="180" ItemHeight="300" Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ListBox.ItemsPanel>
+    </ListBox>
+    <!--<ScrollViewer Name="scroller" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
       <ItemsRepeater Items="{Binding Animes}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
         <ItemsRepeater.Layout>
           <StackLayout Spacing="40" Orientation="Horizontal"/>
@@ -67,6 +96,6 @@
           </DataTemplate>
         </ItemsRepeater.ItemTemplate>
       </ItemsRepeater>
-    </ScrollViewer>
+    </ScrollViewer>-->
   </Grid>
 </Window>

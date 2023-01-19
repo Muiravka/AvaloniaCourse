@@ -21,7 +21,7 @@ namespace coursach
 
         public static object GetTopAnimeList()
         {
-            var client = new RestClient("https://shikimori.one/api/animes/?order=popularity&limit=20");
+            var client = new RestClient("https://shikimori.one/api/animes/?order=popularity&limit=35");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
@@ -31,7 +31,7 @@ namespace coursach
 
         public static object GetAnimeListBySearch(string SearchString)
         {
-            var client = new RestClient($"https://shikimori.one/api/animes/?search={SearchString}&limit=20");
+            var client = new RestClient($"https://shikimori.one/api/animes/?search={SearchString}&limit=35");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
