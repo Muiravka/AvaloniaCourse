@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
+using MessageBox.Avalonia.DTO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using coursach.Models.ApiModels;
@@ -63,6 +64,13 @@ namespace coursach.ViewModels
             }
         }
 
+        private Anime? _selectedAnime;
+        public Anime? SelectedAnime
+        {
+            get => _selectedAnime;
+            set => _selectedAnime = value;
+        }
+
         #endregion
 
 
@@ -95,14 +103,41 @@ namespace coursach.ViewModels
             });
         }
 
-        public RelayCommand<Object> OpenAnimePage
+        public RelayCommand PlusPage
+        {
+            get => new(() =>
+            {
+                Page++;
+                OnPropertyChanged(nameof(Animes));
+            });
+        }
+
+        public RelayCommand MinusPage
+        {
+            get => new(() =>
+            {
+                Page--;
+                OnPropertyChanged(nameof(Animes));
+            });
+        }
+
+        public RelayCommand<Anime> OpenAnimePage
         {
             get => new(obj =>
             {
-                int id = Convert.ToInt32(obj);
-                currentAnime = context.GetAnimeInfo(id);
-                AnimeInfoPage animePage = new AnimeInfoPage(/*id*/);
-                animePage.Show();
+
+                if (obj != null)
+                {
+                    int id = Convert.ToInt32(obj.id);
+                    CurrentAnimeInfo.CurAnime = obj;//context.GetAnimeInfo(id);
+                    AnimeInfoPage animePage = new AnimeInfoPage(/*id*/);
+                    animePage.Show();
+                }
+                else
+                {
+                    var messageBoxNoData = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Ошибка", "Нет выбранного аниме.");
+                    messageBoxNoData.Show();
+                }
             });
         }
         #endregion

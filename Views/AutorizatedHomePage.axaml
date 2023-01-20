@@ -47,12 +47,13 @@
     <ListBox Classes="animes"
     Grid.Row="1" Grid.ColumnSpan="2"
     IsVisible="{Binding InitializationNotifier.IsCompleted, Mode=TwoWay}"
-    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+    ScrollViewer.VerticalScrollBarVisibility="Auto"
     Items="{Binding Animes}"
-    SelectedItem="{Binding SelectedAnime}" Opacity="0.96" OpacityMask="Blue">
+    SelectedItem="{Binding SelectedAnime}"
+    Background="Transparent">
       <ListBox.ItemTemplate>
         <DataTemplate>
-          <Grid ShowGridLines="True">
+          <Grid ShowGridLines="False">
             <Grid.RowDefinitions>
               <RowDefinition Height="*"/>
               <RowDefinition Height="Auto" MinHeight="48"/>
@@ -60,8 +61,8 @@
             <Image Grid.Row="0" Stretch="UniformToFill" asyncImageLoader:ImageLoader.Source="{Binding image.Preview}"/>
             <Border Grid.Row="1" Classes="title">
               <Grid ColumnDefinitions="*, 0.4*" Margin="4">
-                <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap"/>
-                <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="Green"/>
+                <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap" Foreground="Green"/>
+                <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="YellowGreen"/>
               </Grid>
             </Border>
           </Grid>

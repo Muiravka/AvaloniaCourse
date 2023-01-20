@@ -52,6 +52,14 @@ namespace coursach.Models.ApiModels
                 get => $"https://shikimori.one{preview}"; 
                 set => preview = value; 
             }
+
+            private string? _x96;
+            [JsonPropertyName("x96")]
+            public string x96
+            {
+                get => $"https://shikimori.one{_x96}";
+                set => _x96 = value;
+            }
         }
     }
 }

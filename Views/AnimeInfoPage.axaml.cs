@@ -5,10 +5,10 @@ namespace coursach.Views
 {
     public partial class AnimeInfoPage : Window
     {
-        public AnimeInfoPage(/*int id*/)
+        public AnimeInfoPage()
         {
             InitializeComponent();
-            DataContext = new AnimeInfoPageVM(/*id*/);
+            DataContext = new AnimeInfoPageVM();
         }
     }
 }

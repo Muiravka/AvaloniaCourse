@@ -55,6 +55,13 @@ namespace coursach.ViewModels
             }
         }
 
+        private Anime? _selectedAnime;
+        public Anime? SelectedAnime
+        {
+            get => _selectedAnime;
+            set => _selectedAnime = value;
+        }
+
         #endregion
 
 
@@ -75,6 +82,46 @@ namespace coursach.ViewModels
                 Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
             });
         }
+
+        public RelayCommand PlusPage
+        {
+            get => new(() =>
+            {
+                Page++;
+                //Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                OnPropertyChanged(nameof(Animes));
+            });
+        }
+
+        public RelayCommand MinusPage
+        {
+            get => new(() =>
+            {
+                Page--;
+                //Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                OnPropertyChanged(nameof(Animes));
+            });
+        }
+        public RelayCommand<Anime> OpenAnimePage
+        {
+            get => new(obj =>
+            {
+
+                if (obj != null)
+                {
+                    int id = Convert.ToInt32(obj.id);
+                    CurrentAnimeInfo.CurAnime = obj;//context.GetAnimeInfo(id);
+                    AnimeInfoPage animePage = new AnimeInfoPage(/*id*/);
+                    animePage.Show();
+                }
+                else
+                {
+                    var messageBoxNoData = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Ошибка", "Нет выбранного аниме.");
+                    messageBoxNoData.Show();
+                }
+            });
+        }
+
 
         #endregion
     }
