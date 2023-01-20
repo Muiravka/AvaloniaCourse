@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ShikimoriSharp.Information;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,16 +25,39 @@ namespace coursach.Models.ApiModels
         //"url": "/animes/1-cowboy-bebop",
         //"kind": "tv"
 
-        [JsonProperty ("id")] public int? id { get; set; } //id аниме
-        [JsonProperty ("name")] public string? name { get; set; } //название на английском языке
-        [JsonProperty ("russian")] public string? russian { get; set; } //название на русском языке
-        [JsonProperty ("description")] public string? description { get; set; } //описание аниме на русском
+        [JsonProperty("id")] public int? id { get; set; } //id аниме
+        [JsonProperty("name")] public string? name { get; set; } //название на английском языке
+        [JsonProperty("russian")] public string? russian { get; set; } //название на русском языке
+        [JsonProperty("description")] public string? description { get; set; } //описание аниме на русском
         [JsonProperty("status")] public string? status { get; set; } // состояние выхода серий: вышел/выходит/анонсирован
-        [JsonProperty ("aired_on")] public string? aired_on { get; set; } //дата выхода в эфир
-        [JsonProperty ("kind")] public string? kind { get; set; } //тип: сериал, полнометражный, короткометражный
-        [JsonProperty ("score")] public string? score { get; set; } // средняя оценка произведения по 10-ти балльной шкале оценивания
-        [JsonProperty("episodes")] public int? episodes { get; set; } // количество вышедших эпизодов
-        [JsonProperty("image")] public Images? image { get; set; } // постер аниме в двух размерах
+        [JsonProperty("aired_on")] public string? aired_on { get; set; } //дата выхода в эфир
+        [JsonProperty("kind")] public string? kind { get; set; } //тип: сериал, полнометражный, короткометражный
+        [JsonProperty("score")] public string? score { get; set; } // средняя оценка произведения по 10-ти балльной шкале оценивания
+        [JsonProperty("episodes")] public int? episodes { get; set; } // количество эпизодов
+        [JsonProperty("episodes_aired")] public int? episodes_aired { get; set; } // количество вышедших эпизодов
+        [JsonProperty("image")] public Images? image { get; set; } // постеры аниме
+        [JsonProperty("rating")] public string? rating { get; set; } // возрастной рейтинг
+        //[JsonProperty("rating")] private string? rating; // возрастной рейтинг
+        //public string Rating
+        //{
+        //    get => rating;
+        //    set
+        //    {
+        //        if (value == "r")
+        //        {
+        //            rating = "R-17. Лицам до 17 лет обязательно присутствие взрослого.";
+        //        }
+        //        else if (value == "r_plus")
+        //        {
+        //            rating = "R+. Лмцам до 17 лет просмотр запрещён.";
+        //        }
+        //        else rating = value;
+        //    }
+        //}
+
+        [JsonProperty("duration")] public int? duration { get; set; } // длительность эпизода
+        //[JsonProperty("genres")] public Genres? genres { get; set; } // список жанров
+        //[JsonProperty("studios")] public Studios? studios { get; set; } // студия
 
         public class Images
         {
@@ -61,5 +85,27 @@ namespace coursach.Models.ApiModels
                 set => _x96 = value;
             }
         }
+
+        //public class Genres
+        //{
+        //    private int id;
+        //    [JsonPropertyName("id")]
+        //    public int Id
+        //    {
+        //        get => id;
+        //        set
+        //        {
+        //            id = value;
+        //        }
+        //    }
+
+        //    private string russian;
+        //    [JsonPropertyName("russian")]
+        //    public string Russian
+        //    {
+        //        get => russian;
+        //        set => russian = value;
+        //    }
+        //}
     }
 }

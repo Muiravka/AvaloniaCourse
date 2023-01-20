@@ -31,7 +31,7 @@
     </StackPanel>
     <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
       <TextBlock Text="{Binding CurrentAnime.russian}" FontSize="30"/>
-      <TextBlock Text="Краткая информация:" FontSize="20" Margin="0 10 0 0"/>
+      <TextBlock Text="Информация:" FontSize="20" Margin="0 10 0 0"/>
       <StackPanel Orientation="Horizontal">
         <TextBlock Text="Тип: " FontSize="20"/>
         <TextBlock Text="{Binding CurrentAnime.kind}" FontSize="20"/>
@@ -47,6 +47,15 @@
       <StackPanel Orientation="Horizontal">
         <TextBlock Text="Статус выхода серий: " FontSize="20"/>
         <TextBlock Text="{Binding CurrentAnime.status}" FontSize="20"/>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Длительность эпизода: " FontSize="20"/>
+        <TextBlock Text="{Binding CurrentAnime.duration}" FontSize="20"/>
+        <TextBlock Text=" мин." FontSize="20"/>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Возрастной рейтинг: " FontSize="20"/>
+        <TextBlock Text="{Binding CurrentAnime.rating}" FontSize="20"/>
       </StackPanel>
     </StackPanel>
     <TextBlock Text="{Binding CurrentAnime.description}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
