@@ -57,6 +57,10 @@
         <TextBlock Text="Возрастной рейтинг: " FontSize="20"/>
         <TextBlock Text="{Binding CurrentAnime.rating}" FontSize="20"/>
       </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Жанры: " FontSize="20"/>
+        <TextBlock Text="{Binding CurrentAnime.Genres.Russian}" FontSize="20"/>
+      </StackPanel>
     </StackPanel>
     <TextBlock Text="{Binding CurrentAnime.description}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
     <Button Content="Просмотр комментариев" MinWidth="100" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>

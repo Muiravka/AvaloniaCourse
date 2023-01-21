@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ShikimoriSharp.Information;
 using System;
 using System.Collections.Generic;
@@ -29,34 +30,61 @@ namespace coursach.Models.ApiModels
         [JsonProperty("name")] public string? name { get; set; } //название на английском языке
         [JsonProperty("russian")] public string? russian { get; set; } //название на русском языке
         [JsonProperty("description")] public string? description { get; set; } //описание аниме на русском
-        [JsonProperty("status")] public string? status { get; set; } // состояние выхода серий: вышел/выходит/анонсирован
+        [JsonProperty("status")] private string? _status; // состояние выхода серий
+        public string? status
+        {
+            get
+            {
+                if (_status == "released")
+                {
+                    return "Полностью вышло.";
+                }
+                else if (_status == "ongoing")
+                {
+                    return "Выходит.";
+                }
+                else return _status;
+            } 
+            set => _status = value; 
+        } 
         [JsonProperty("aired_on")] public string? aired_on { get; set; } //дата выхода в эфир
         [JsonProperty("kind")] public string? kind { get; set; } //тип: сериал, полнометражный, короткометражный
         [JsonProperty("score")] public string? score { get; set; } // средняя оценка произведения по 10-ти балльной шкале оценивания
         [JsonProperty("episodes")] public int? episodes { get; set; } // количество эпизодов
         [JsonProperty("episodes_aired")] public int? episodes_aired { get; set; } // количество вышедших эпизодов
         [JsonProperty("image")] public Images? image { get; set; } // постеры аниме
-        [JsonProperty("rating")] public string? rating { get; set; } // возрастной рейтинг
-        //[JsonProperty("rating")] private string? rating; // возрастной рейтинг
-        //public string Rating
-        //{
-        //    get => rating;
-        //    set
-        //    {
-        //        if (value == "r")
-        //        {
-        //            rating = "R-17. Лицам до 17 лет обязательно присутствие взрослого.";
-        //        }
-        //        else if (value == "r_plus")
-        //        {
-        //            rating = "R+. Лмцам до 17 лет просмотр запрещён.";
-        //        }
-        //        else rating = value;
-        //    }
-        //}
+        [JsonProperty("rating")] private string? _rating; // возрастной рейтинг
+        public string rating
+        {
+            get
+            {
+                if (_rating == "r")
+                {
+                    return "R-17. Лицам до 17 лет обязательно присутствие взрослого.";
+                }
+                else if (_rating == "r_plus")
+                {
+                    return "R+. Лмцам до 17 лет просмотр запрещён.";
+                }
+                else if (_rating == "pg_13")
+                {
+                    return "PG-13. Детям до 13 лет просмотр не желателен.";
+                }
+                else if (_rating == "pg")
+                {
+                    return "PG. Рекомендуется присутствие родителей.";
+                }
+                else if (_rating == "rx")
+                {
+                    return "Rx. Хентай.";
+                }
+                else return _rating;
+            }
+            set => _rating = value;
+        }
 
         [JsonProperty("duration")] public int? duration { get; set; } // длительность эпизода
-        //[JsonProperty("genres")] public Genres? genres { get; set; } // список жанров
+        [JsonProperty("genres")] public Genres[]? genres { get; set; } // список жанров
         //[JsonProperty("studios")] public Studios? studios { get; set; } // студия
 
         public class Images
@@ -86,26 +114,13 @@ namespace coursach.Models.ApiModels
             }
         }
 
-        //public class Genres
-        //{
-        //    private int id;
-        //    [JsonPropertyName("id")]
-        //    public int Id
-        //    {
-        //        get => id;
-        //        set
-        //        {
-        //            id = value;
-        //        }
-        //    }
+        public class Genres
+        {
+            [JsonPropertyName("id")] public int Id { get; set; }
 
-        //    private string russian;
-        //    [JsonPropertyName("russian")]
-        //    public string Russian
-        //    {
-        //        get => russian;
-        //        set => russian = value;
-        //    }
-        //}
+            [JsonPropertyName("russian")] public string? Russian { get; set; }
+        }
+
+
     }
 }
