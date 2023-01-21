@@ -7,6 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
         x:Class="coursach.Views.AutorizatedHomePage"
         Title="Главная страница"
+        Icon="/Assets/logo.png"
         Background="{DynamicResource ResourceKey=backgroundImage}"
         x:Name="AutorizatedHome">
   <Window.Resources>
@@ -25,7 +26,7 @@
     <vm:AutorizatedHomePageVM/>
   </Design.DataContext>
 
-  <Grid ShowGridLines="False" >
+  <Grid ShowGridLines="True" >
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="1100"/>
       <ColumnDefinition/>
@@ -44,8 +45,8 @@
       </TextBox>
       <Button Classes="CustomButton" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Content="В профиль" Width="150" Margin="50 30 0 0" Command="{Binding ReturnToProfile}" CommandParameter="{Binding ElementName=AutorizatedHome}"/>
     </StackPanel>
-    <ListBox Classes="animes"
-    Grid.Row="1" Grid.ColumnSpan="2"
+    <ListBox Classes="animes" x:Name="animeList"
+    Grid.Row="1" Grid.ColumnSpan="1"
     IsVisible="{Binding InitializationNotifier.IsCompleted, Mode=TwoWay}"
     ScrollViewer.VerticalScrollBarVisibility="Auto"
     Items="{Binding Animes}"
@@ -74,29 +75,8 @@
         </ItemsPanelTemplate>
       </ListBox.ItemsPanel>
     </ListBox>
-    <!--<ScrollViewer Name="scroller" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
-      <ItemsRepeater Items="{Binding Animes}" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 50 0 0">
-        <ItemsRepeater.Layout>
-          <StackLayout Spacing="40" Orientation="Horizontal"/>
-        </ItemsRepeater.Layout>
-        <ItemsRepeater.ItemTemplate>
-          <DataTemplate>
-            <StackPanel Margin="5">
-              <TextBlock Text="{Binding score}" HorizontalAlignment="Center" Foreground="Yellow"/>
-              <Grid Width="90" Height="140">
-                <Image asyncImageLoader:ImageLoader.Source="{Binding image.Preview}" Stretch="UniformToFill">
-                  <Image.KeyBindings>
-                    <KeyBinding Command="{Binding OpenAnimePage}"/>
-                  </Image.KeyBindings>
-                </Image>
-              </Grid>
-              <Border Width="100">
-                <TextBlock HorizontalAlignment="Center" Text="{Binding russian}" FontSize="15" Foreground="Orange" TextWrapping="WrapWithOverflow"/>
-              </Border>
-            </StackPanel>
-          </DataTemplate>
-        </ItemsRepeater.ItemTemplate>
-      </ItemsRepeater>
-    </ScrollViewer>-->
+    <Button Content="Аниме" Classes="CustomButton" Command="{Binding OpenAnimePage}" Width="100" Height="30" CommandParameter="{Binding ElementName=animeList, Path=SelectedItem}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 40 0 0" HorizontalContentAlignment="Center"/>
+    <Button Content="+" Classes="CustomButton" Command="{Binding PlusPage}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15"/>
+    <Button Content="-" Classes="CustomButton" Command="{Binding MinusPage}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="15"/>
   </Grid>
 </Window>

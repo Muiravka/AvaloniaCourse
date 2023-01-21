@@ -87,9 +87,12 @@ namespace coursach.ViewModels
         {
             get => new(() =>
             {
-                Page++;
-                //Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
-                OnPropertyChanged(nameof(Animes));
+                ++Page;
+                if (new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString)).Count != 0)
+                {
+                    Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                }
+                else --Page;
             });
         }
 
@@ -97,9 +100,11 @@ namespace coursach.ViewModels
         {
             get => new(() =>
             {
-                Page--;
-                //Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
-                OnPropertyChanged(nameof(Animes));
+                if (Page > 1)
+                {
+                    Page--;
+                    Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                }
             });
         }
         public RelayCommand<Anime> OpenAnimePage

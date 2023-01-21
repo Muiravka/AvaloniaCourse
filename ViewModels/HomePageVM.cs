@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace coursach.ViewModels
 {
@@ -99,6 +100,7 @@ namespace coursach.ViewModels
         {
             get => new(() =>
             {
+                Page = 1;
                 Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
             });
         }
@@ -107,8 +109,13 @@ namespace coursach.ViewModels
         {
             get => new(() =>
             {
-                Page++;
-                OnPropertyChanged(nameof(Animes));
+                ++Page;
+                if (new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString)).Count != 0)
+                {
+                    Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                }
+                else --Page;
+                //OnPropertyChanged(nameof(Animes));
             });
         }
 
@@ -116,8 +123,12 @@ namespace coursach.ViewModels
         {
             get => new(() =>
             {
-                Page--;
-                OnPropertyChanged(nameof(Animes));
+                if (Page > 1)
+                {
+                    Page--;
+                    Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                    //OnPropertyChanged(nameof(Animes));
+                }
             });
         }
 

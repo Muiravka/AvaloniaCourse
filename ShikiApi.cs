@@ -43,7 +43,7 @@ namespace coursach
         {
             List<Anime>? listOfAnime = new List<Anime>();
 
-            string param = $"api/animes/?page={page}&order=popularity&limit=35";
+            string param = $"api/animes/?page={page}&order=popularity&limit=36";
             if (SearchString != null)
             {
                 param += $"&search={SearchString}";
