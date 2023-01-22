@@ -7,9 +7,8 @@
         mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
         x:Class="coursach.Views.AnimeInfoPage"
         Title="{Binding CurrentAnime.russian}"
-        x:Name="AnimePage">
-
-  <!--<Image asyncImageLoader:ImageLoader.Source="{Binding CurrentAnime.image.Original}"/>-->
+        x:Name="AnimePage"
+        Icon="/Assets/logo.png">
   
   <Design.DataContext>
     <vm:AnimeInfoPageVM/>
@@ -69,7 +68,7 @@
       </StackPanel>
     </StackPanel>
     <TextBlock Text="{Binding CurrentAnime.description}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
-    <Button Content="Просмотр комментариев" MinWidth="100" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-    <Button Content="Оставить комментарий" MinWidth="100" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+    <Button MinWidth="40" MinHeight="40" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="AliceBlue" Command="{Binding BackToTheMainPage}" CommandParameter="{Binding ElementName=AnimePage}"/>
+    <Button Content="Комментарии" MinWidth="100" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding OpenComments}" CommandParameter="{Binding ElementName=AnimePage}"/>
   </Grid>
 </Window>

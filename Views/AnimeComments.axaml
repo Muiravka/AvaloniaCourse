@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:coursach.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
+        x:Class="coursach.Views.AnimeComments"
+        Title="{Binding PageTitle}"
+        x:Name="CommentsPage"
+        Icon="/Assets/logo.png">
+
+  <Design.DataContext>
+    <vm:AnimeCommentsVM/>
+  </Design.DataContext>
+
+  <Grid ShowGridLines="True">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition MaxWidth="350"/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition MaxHeight="120"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Image Source="/Assets/logo.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left"/>
+    <Button Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="100" Height="100" Opacity="0" Command="{Binding GoBack}" CommandParameter="{Binding ElementName=CommentsPage}" Margin="10 0 0 0"/>
+    <Button Content="Оставить комментарий" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding CreateComment}"/>
+    <DataGrid Name="Comments" Items="{Binding ListOfComments}" Grid.Column="1" Grid.Row="1">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Автор" Binding="{Binding Userid}"/>
+        <DataGridTextColumn Header="Комментарий" Binding="{Binding Commentcontent}"/>
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+</Window>

@@ -1,5 +1,8 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.Input;
 using coursach.Models.ApiModels;
+using coursach.Views;
+using coursach.Views.CurrentUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +14,9 @@ namespace coursach.ViewModels
     public class AnimeInfoPageVM : ViewModelBase
     {
         private ShikiApi context = new ShikiApi();
-        private Anime? _currentAnime;
 
         #region Fields
+        private Anime? _currentAnime;
         public Anime? CurrentAnime
         {
             get => _currentAnime;
@@ -25,6 +28,39 @@ namespace coursach.ViewModels
         {
             get => _listOfGenres;
             set => _listOfGenres = value;
+        }
+
+        #endregion
+
+        #region Commands
+
+        RelayCommand<Window> OpenComments
+        {
+            get => new(x =>
+            {
+                AnimeComments comPage = new AnimeComments();
+                comPage.Show();
+                x.Close();
+            });
+        }
+
+        RelayCommand<Window> BackToTheMainPage
+        {
+            get => new(x =>
+            {
+                if (CurrentUser.currentUser != null)
+                {
+                    AutorizatedHomePage autorizatedHomePage = new AutorizatedHomePage();
+                    autorizatedHomePage.Show();
+                    x.Close();
+                }
+                else
+                {
+                    MainWindow mainWindow= new MainWindow();
+                    mainWindow.Show();
+                    x.Close();
+                }
+            });
         }
 
         #endregion
