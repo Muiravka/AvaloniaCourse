@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using coursach.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace coursach;
@@ -97,6 +96,7 @@ public partial class CourseContext : DbContext
             entity.Property(e => e.Id)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("id");
+            entity.Property(e => e.AnimeId).HasColumnName("anime_id");
             entity.Property(e => e.Commentcontent)
                 .HasMaxLength(300)
                 .HasColumnName("commentcontent");

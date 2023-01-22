@@ -105,6 +105,19 @@ namespace coursach.ViewModels
             });
         }
 
+        public RelayCommand LogoEnter
+        {
+            get => new(() =>
+            {
+                if (Page > 1 || SearchString != null)
+                {
+                    Page = 1;
+                    SearchString = null;
+                    Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                }
+            });
+        }
+
         public RelayCommand PlusPage
         {
             get => new(() =>
@@ -115,7 +128,6 @@ namespace coursach.ViewModels
                     Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
                 }
                 else --Page;
-                //OnPropertyChanged(nameof(Animes));
             });
         }
 
@@ -127,7 +139,6 @@ namespace coursach.ViewModels
                 {
                     Page--;
                     Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
-                    //OnPropertyChanged(nameof(Animes));
                 }
             });
         }

@@ -1,4 +1,5 @@
-﻿using coursach.Models.ApiModels;
+﻿using CommunityToolkit.Mvvm.Input;
+using coursach.Models.ApiModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace coursach.ViewModels
     {
         private ShikiApi context = new ShikiApi();
         private Anime? _currentAnime;
+
+        #region Fields
         public Anime? CurrentAnime
         {
             get => _currentAnime;
@@ -23,6 +26,8 @@ namespace coursach.ViewModels
             get => _listOfGenres;
             set => _listOfGenres = value;
         }
+
+        #endregion
 
         public AnimeInfoPageVM()
         {

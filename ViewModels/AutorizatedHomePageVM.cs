@@ -66,6 +66,19 @@ namespace coursach.ViewModels
 
 
         #region Commands
+
+        public RelayCommand LogoEnter
+        {
+            get => new(() =>
+            {
+                if (Page > 1 || SearchString != null)
+                {
+                    Page = 1;
+                    SearchString = null;
+                    Animes = new ObservableCollection<Anime>(context.GetAnimeList(Page, SearchString));
+                }
+            });
+        }
         public RelayCommand<Window> ReturnToProfile
         {
             get => new(x =>
