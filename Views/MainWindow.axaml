@@ -65,7 +65,7 @@
             <Image Grid.Row="0" Stretch="UniformToFill" asyncImageLoader:ImageLoader.Source="{Binding image.Preview}"/>
             <Border Grid.Row="1" Classes="title">
               <Grid ColumnDefinitions="*, 0.4*" Margin="4">
-                <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap" Foreground="Green"/>
+                <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap" Foreground="Brown"/>
                 <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="YellowGreen"/>
               </Grid>
             </Border>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace coursach.Models;
+namespace coursach;
 
 public partial class Watchedanime
 {
