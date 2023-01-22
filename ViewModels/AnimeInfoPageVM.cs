@@ -17,10 +17,22 @@ namespace coursach.ViewModels
             set => _currentAnime = value;
         }
 
+        private List<string> _listOfGenres;
+        public List<string> ListOfGenres
+        {
+            get => _listOfGenres;
+            set => _listOfGenres = value;
+        }
+
         public AnimeInfoPageVM()
         {
             int id = (int)CurrentAnimeInfo.CurAnime.id;
             _currentAnime = context.GetAnimeInfo(id);
+            _listOfGenres = new List<string>();
+            foreach (var item in CurrentAnime.genres)
+            {
+                _listOfGenres.Add(item.Russian);
+            }
         }
     }
 }
