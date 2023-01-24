@@ -50,14 +50,14 @@ namespace coursach.ViewModels
             {
                 if (CurrentUser.currentUser != null)
                 {
-                    AutorizatedHomePage autorizatedHomePage = new AutorizatedHomePage();
-                    autorizatedHomePage.Show();
+                    //AutorizatedHomePage autorizatedHomePage = new AutorizatedHomePage();
+                    //autorizatedHomePage.Show();
                     x.Close();
                 }
                 else
                 {
-                    MainWindow mainWindow= new MainWindow();
-                    mainWindow.Show();
+                    //MainWindow mainWindow= new MainWindow();
+                    //mainWindow.Show();
                     x.Close();
                 }
             });

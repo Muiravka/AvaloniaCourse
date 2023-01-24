@@ -15,17 +15,19 @@
 
   <Grid ShowGridLines="True">
     <Grid.ColumnDefinitions>
-      <ColumnDefinition MaxWidth="350"/>
+      <ColumnDefinition MaxWidth="200"/>
       <ColumnDefinition/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
       <RowDefinition MaxHeight="120"/>
       <RowDefinition/>
+      <RowDefinition MaxHeight="100"/>
     </Grid.RowDefinitions>
     <Image Source="/Assets/logo.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left"/>
     <Button Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="100" Height="100" Opacity="0" Command="{Binding GoBack}" CommandParameter="{Binding ElementName=CommentsPage}" Margin="10 0 0 0"/>
-    <Button Content="Оставить комментарий" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding CreateComment}"/>
-    <DataGrid Name="Comments" Items="{Binding ListOfComments}" Grid.Column="1" Grid.Row="1">
+    <Button Content="Оставить комментарий" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Command="{Binding CreateComment}" Margin="20"/>
+    <TextBox CornerRadius="10" Background="Gray" Grid.Column="1" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding CommentContentString}"/>
+    <DataGrid Name="Comments" Items="{Binding ListOfComments}" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Автор" Binding="{Binding Userid}"/>
         <DataGridTextColumn Header="Комментарий" Binding="{Binding Commentcontent}"/>

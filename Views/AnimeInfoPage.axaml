@@ -8,8 +8,9 @@
         x:Class="coursach.Views.AnimeInfoPage"
         Title="{Binding CurrentAnime.russian}"
         x:Name="AnimePage"
-        Icon="/Assets/logo.png">
-  
+        Icon="/Assets/logo.png"
+        Topmost="False" WindowStartupLocation="CenterScreen">
+
   <Design.DataContext>
     <vm:AnimeInfoPageVM/>
   </Design.DataContext>
@@ -27,6 +28,12 @@
     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
       <TextBlock Text="Рейтинг: " FontSize="19"/>
       <TextBlock Text="{Binding CurrentAnime.score}" FontSize="19" Foreground="Gold"/>
+    </StackPanel>
+    <StackPanel Orientation="Vertical" Spacing="5" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 15 0 0">
+      <Button Content="Запланировано" Command="{Binding PlanToWatchCommand}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Просмотрено" Command="{Binding WatchedCommand}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Брошено" Command="{Binding DropedCommand}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Удалить из списка" Command="{Binding DeleteFrom}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
     </StackPanel>
     <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
       <TextBlock Text="{Binding CurrentAnime.russian}" FontSize="30" TextWrapping="Wrap"/>
@@ -68,7 +75,10 @@
       </StackPanel>
     </StackPanel>
     <TextBlock Text="{Binding CurrentAnime.description}" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"/>
-    <Button MinWidth="40" MinHeight="40" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="AliceBlue" Command="{Binding BackToTheMainPage}" CommandParameter="{Binding ElementName=AnimePage}"/>
+    <Grid MaxWidth="40" MaxHeight="40" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10">
+      <Image Source="/Assets/return.png" Stretch="Fill"/>
+      <Button MinWidth="40" MinHeight="40" Command="{Binding BackToTheMainPage}" CommandParameter="{Binding ElementName=AnimePage}" Opacity="0"/>
+    </Grid>
     <Button Content="Комментарии" MinWidth="100" Grid.Column="0" Grid.Row="1" Margin="10" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding OpenComments}" CommandParameter="{Binding ElementName=AnimePage}"/>
   </Grid>
 </Window>
