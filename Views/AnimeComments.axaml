@@ -13,7 +13,7 @@
     <vm:AnimeCommentsVM/>
   </Design.DataContext>
 
-  <Grid ShowGridLines="True">
+  <Grid ShowGridLines="False">
     <Grid.ColumnDefinitions>
       <ColumnDefinition MaxWidth="200"/>
       <ColumnDefinition/>
@@ -27,10 +27,11 @@
     <Button Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Width="100" Height="100" Opacity="0" Command="{Binding GoBack}" CommandParameter="{Binding ElementName=CommentsPage}" Margin="10 0 0 0"/>
     <Button Content="Оставить комментарий" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Command="{Binding CreateComment}" Margin="20"/>
     <TextBox CornerRadius="10" Background="Gray" Grid.Column="1" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="{Binding CommentContentString}"/>
-    <DataGrid Name="Comments" Items="{Binding ListOfComments}" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="True">
+    <DataGrid Name="Comments" Items="{Binding ListOfComments}" Grid.Column="1" Grid.Row="1" AutoGenerateColumns="False">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Автор" Binding="{Binding Userid}"/>
         <DataGridTextColumn Header="Комментарий" Binding="{Binding Commentcontent}"/>
+        <DataGridTextColumn Header="Время" Binding="{Binding Commentdate}"/>
       </DataGrid.Columns>
     </DataGrid>
   </Grid>

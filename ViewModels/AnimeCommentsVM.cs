@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
+using coursach.Models;
 using coursach.Models.ApiModels;
 using coursach.Views;
 using coursach.Views.CurrentUser;
@@ -22,7 +23,7 @@ namespace coursach.ViewModels
             int id = (int)CurrentAnimeInfo.CurAnime.id;
             _currentAnime = context.GetAnimeInfo(id);
             _pageTitle = CurrentAnime.russian;
-            _listOfComments = new ObservableCollection<UserComment>(dbContext.UserComments.Where(x => x.AnimeId == id));
+            _listOfComments = new ObservableCollection<Usercomment>(dbContext.Usercomments.Where(x => x.AnimeId == id));
         }
 
         #region Fields
@@ -41,8 +42,8 @@ namespace coursach.ViewModels
             set => _pageTitle = value;
         }
 
-        private ObservableCollection<UserComment> _listOfComments;
-        public ObservableCollection<UserComment> ListOfComments
+        private ObservableCollection<Usercomment> _listOfComments;
+        public ObservableCollection<Usercomment> ListOfComments
         {
             get => _listOfComments;
             set => _listOfComments = value;
@@ -66,16 +67,17 @@ namespace coursach.ViewModels
                     int anime_id = (int)CurrentAnimeInfo.CurAnime.id;
                     if (comString != null)
                     {
-                        UserComment newUserComment = new UserComment();
-                        newUserComment.User = _user;
+                        Usercomment newUserComment = new Usercomment();
                         newUserComment.AnimeId = anime_id;
                         newUserComment.Userid = usrId;
                         newUserComment.Commentcontent = comString;
-                        dbContext.UserComments.Add(newUserComment);
+                        //newUserComment.Commentdate = DateTime.UtcNow;
+                        dbContext.Usercomments.Add(newUserComment);
+                        dbContext.SaveChanges();
                         var messageBoxSuccess = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Успех", "Комментарий успешно создан.");
                         messageBoxSuccess.Show();
-                        ListOfComments = new ObservableCollection<UserComment>(dbContext.UserComments.Where(x => x.AnimeId == (int)CurrentAnimeInfo.CurAnime.id));
-                        OnPropertyChanged();
+                        ListOfComments = new ObservableCollection<Usercomment>(dbContext.Usercomments.Where(x => x.AnimeId == (int)CurrentAnimeInfo.CurAnime.id));
+                        OnPropertyChanged(nameof(ListOfComments));
                     }
                     else if (comString == null)
                     {

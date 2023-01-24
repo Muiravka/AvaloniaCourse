@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using coursach.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace coursach;
@@ -21,7 +22,7 @@ public partial class CourseContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    public virtual DbSet<UserComment> UserComments { get; set; }
+    public virtual DbSet<Usercomment> Usercomments { get; set; }
 
     public virtual DbSet<Watchedanime> Watchedanimes { get; set; }
 
@@ -87,11 +88,11 @@ public partial class CourseContext : DbContext
                 .HasColumnName("user_password");
         });
 
-        modelBuilder.Entity<UserComment>(entity =>
+        modelBuilder.Entity<Usercomment>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("user_comment_pkey");
 
-            entity.ToTable("user_comment");
+            entity.ToTable("usercomments");
 
             entity.Property(e => e.Id)
                 .UseIdentityAlwaysColumn()
@@ -100,9 +101,13 @@ public partial class CourseContext : DbContext
             entity.Property(e => e.Commentcontent)
                 .HasMaxLength(300)
                 .HasColumnName("commentcontent");
+            entity.Property(e => e.Commentdate)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("commentdate");
             entity.Property(e => e.Userid).HasColumnName("userid");
 
-            entity.HasOne(d => d.User).WithMany(p => p.UserComments)
+            entity.HasOne(d => d.User).WithMany(p => p.Usercomments)
                 .HasForeignKey(d => d.Userid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_UserComment_To_Users");

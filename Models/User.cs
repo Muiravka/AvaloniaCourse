@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace coursach;
+namespace coursach.Models;
 
 public partial class User
 {
@@ -17,7 +17,7 @@ public partial class User
 
     public virtual ICollection<Plantowatch> Plantowatches { get; } = new List<Plantowatch>();
 
-    public virtual ICollection<UserComment> UserComments { get; } = new List<UserComment>();
+    public virtual ICollection<Usercomment> Usercomments { get; } = new List<Usercomment>();
 
     public virtual ICollection<Watchedanime> Watchedanimes { get; } = new List<Watchedanime>();
 }
