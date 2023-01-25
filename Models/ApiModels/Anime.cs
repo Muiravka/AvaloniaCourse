@@ -64,7 +64,7 @@ namespace coursach.Models.ApiModels
                 }
                 else if (_rating == "r_plus")
                 {
-                    return "R+. Лмцам до 17 лет просмотр запрещён.";
+                    return "R+. Лицам до 17 лет просмотр запрещён.";
                 }
                 else if (_rating == "pg_13")
                 {

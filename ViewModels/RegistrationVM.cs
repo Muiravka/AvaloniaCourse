@@ -38,7 +38,7 @@ namespace coursach.ViewModels
                     var messageBoxNoData = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Ошибка", "Недостаток данных.");
                     messageBoxNoData.Show();
                 }
-                else if (true)
+                else
                 {
                     CourseContext context = new CourseContext();
                     var existingUser = context.Users.FirstOrDefault(x => x.Nickname == UserLogin);

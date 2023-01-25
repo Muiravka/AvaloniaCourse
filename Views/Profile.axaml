@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:coursach.ViewModels"
+        xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" MaxWidth="1280" MaxHeight="720" MinHeight="720" MinWidth="1280"
@@ -31,17 +32,97 @@
       <TextBlock Text="!" FontSize="30"/>
     </StackPanel>
     <Button Grid.Row="0" Grid.Column="1" Content="Выйти" Command="{Binding LogOut}" CommandParameter="{Binding ElementName=UserProfile}" HorizontalAlignment="Right" VerticalAlignment="Top" Opacity="1" Margin="30" Width="80" HorizontalContentAlignment="Center"/>
-    <TabControl Grid.Row="1" Grid.ColumnSpan="2">
+    <TabControl Grid.Row="1" Grid.Column="0">
       <TabItem Header="Запланировано" VerticalContentAlignment="Center" Margin="10 0 0 0">
-        
+        <ListBox Classes="animes" x:Name="PlanToWatchAnimeList"
+          ScrollViewer.VerticalScrollBarVisibility="Visible"
+          Items="{Binding PlanToWatchAnime}"
+          SelectedItem="{Binding SelectedAnime}"
+          Background="Transparent">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Grid ShowGridLines="False">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="Auto" MinHeight="48"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Stretch="UniformToFill" asyncImageLoader:ImageLoader.Source="{Binding image.Preview}"/>
+                <Border Grid.Row="1" Classes="title">
+                  <Grid ColumnDefinitions="*, 0.4*" Margin="4">
+                    <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap" Foreground="Brown"/>
+                    <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="YellowGreen"/>
+                  </Grid>
+                </Border>
+              </Grid>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel ItemWidth="180" ItemHeight="300" Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+        </ListBox>
       </TabItem>
       <TabItem Header="Просмотрено" VerticalContentAlignment="Center" Margin="150 0 0 0">
-        
+        <ListBox Classes="animes" x:Name="WatchedAnimeList"
+    ScrollViewer.VerticalScrollBarVisibility="Visible"
+    Items="{Binding WatchedAnime}"
+    SelectedItem="{Binding SelectedAnime}"
+    Background="Transparent">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Grid ShowGridLines="True">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="Auto" MinHeight="48"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Stretch="UniformToFill" asyncImageLoader:ImageLoader.Source="{Binding image.Preview}"/>
+                <Border Grid.Row="1" Classes="title">
+                  <Grid ColumnDefinitions="*, 0.4*" Margin="4">
+                    <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap" Foreground="Brown"/>
+                    <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="YellowGreen"/>
+                  </Grid>
+                </Border>
+              </Grid>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel ItemWidth="180" ItemHeight="300" Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+        </ListBox>
       </TabItem>
       <TabItem Header="Брошено" VerticalContentAlignment="Center" Margin="150 0 0 0">
-        
+        <ListBox Classes="animes" x:Name="dropedAnimeList"
+    ScrollViewer.VerticalScrollBarVisibility="Visible"
+    Items="{Binding DroppedAnime}"
+    SelectedItem="{Binding SelectedAnime}"
+    Background="Transparent">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Grid ShowGridLines="False">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="Auto" MinHeight="48"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Stretch="UniformToFill" asyncImageLoader:ImageLoader.Source="{Binding image.Preview}"/>
+                <Border Grid.Row="1" Classes="title">
+                  <Grid ColumnDefinitions="*, 0.4*" Margin="4">
+                    <TextBlock FontSize="15" Text="{Binding russian}" TextWrapping="Wrap" Foreground="Brown"/>
+                    <TextBlock FontSize="15" Grid.Column="1" Text="{Binding score}" Foreground="YellowGreen"/>
+                  </Grid>
+                </Border>
+              </Grid>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel ItemWidth="180" ItemHeight="300" Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+        </ListBox>
       </TabItem>
     </TabControl>
-    
   </Grid>
 </Window>

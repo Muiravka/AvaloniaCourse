@@ -30,10 +30,10 @@
       <TextBlock Text="{Binding CurrentAnime.score}" FontSize="19" Foreground="Gold"/>
     </StackPanel>
     <StackPanel Orientation="Vertical" Spacing="5" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 15 0 0">
-      <Button Content="Запланировано" Command="{Binding PlanToWatchCommand}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
-      <Button Content="Просмотрено" Command="{Binding WatchedCommand}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
-      <Button Content="Брошено" Command="{Binding DropedCommand}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
-      <Button Content="Удалить из списка" Command="{Binding DeleteFrom}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Запланировано" Command="{Binding AddToPlanList}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Просмотрено" Command="{Binding AddToWatchedList}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Брошено" Command="{Binding AddToDropList}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
+      <Button Content="Удалить из списка" Command="{Binding DeleteFromAllLists}" Width="145" Height="35" HorizontalContentAlignment="Center"/>
     </StackPanel>
     <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
       <TextBlock Text="{Binding CurrentAnime.russian}" FontSize="30" TextWrapping="Wrap"/>
