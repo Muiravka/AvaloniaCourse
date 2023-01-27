@@ -1,5 +1,4 @@
 ﻿using Avalonia;
-//using Avalonia.ReactiveUI;
 using System;
 
 namespace coursach
@@ -18,6 +17,5 @@ namespace coursach
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace();
-                //.UseReactiveUI();
     }
 }

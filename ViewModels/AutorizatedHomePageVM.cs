@@ -127,8 +127,8 @@ namespace coursach.ViewModels
 
                 if (obj != null)
                 {
-                    CurrentAnimeInfo.CurAnime = obj;//context.GetAnimeInfo(id);
-                    AnimeInfoPage animePage = new AnimeInfoPage(/*id*/);
+                    CurrentAnimeInfo.CurAnime = obj;
+                    AnimeInfoPage animePage = new AnimeInfoPage();
                     animePage.Show();
                 }
                 else

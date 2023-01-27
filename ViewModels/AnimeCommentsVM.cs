@@ -71,7 +71,6 @@ namespace coursach.ViewModels
                         newUserComment.AnimeId = anime_id;
                         newUserComment.Userid = usrId;
                         newUserComment.Commentcontent = comString;
-                        //newUserComment.Commentdate = DateTime.UtcNow;
                         dbContext.Usercomments.Add(newUserComment);
                         dbContext.SaveChanges();
                         var messageBoxSuccess = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Успех", "Комментарий успешно создан.");

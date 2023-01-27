@@ -15,7 +15,7 @@
     <vm:ProfileVM/>
   </Design.DataContext>
 
-  <Grid ShowGridLines="True">
+  <Grid ShowGridLines="False">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="1100"/>
       <ColumnDefinition/>
@@ -71,7 +71,7 @@
     Background="Transparent">
           <ListBox.ItemTemplate>
             <DataTemplate>
-              <Grid ShowGridLines="True">
+              <Grid ShowGridLines="False">
                 <Grid.RowDefinitions>
                   <RowDefinition Height="*"/>
                   <RowDefinition Height="Auto" MinHeight="48"/>

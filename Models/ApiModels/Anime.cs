@@ -13,19 +13,6 @@ namespace coursach.Models.ApiModels
 {
     public class Anime
     {
-        //example:
-        //"id": 1,
-        //"name": "Cowboy Bebop",
-        //"russian": "Ковбой Бибоп",
-        //"image": {
-        //    "original": "/system/animes/original/1.jpg?1633690032",
-        //    "preview": "/system/animes/preview/1.jpg?1633690032",
-        //    "x96": "/system/animes/x96/1.jpg?1633690032",
-        //    "x48": "/system/animes/x48/1.jpg?1633690032"
-        //},
-        //"url": "/animes/1-cowboy-bebop",
-        //"kind": "tv"
-
         [JsonProperty("id")] public int? id { get; set; } //id аниме
         [JsonProperty("name")] public string? name { get; set; } //название на английском языке
         [JsonProperty("russian")] public string? russian { get; set; } //название на русском языке
@@ -85,7 +72,6 @@ namespace coursach.Models.ApiModels
 
         [JsonProperty("duration")] public int? duration { get; set; } // длительность эпизода
         [JsonProperty("genres")] public Genres[]? genres { get; set; } // список жанров
-        //[JsonProperty("studios")] public Studios? studios { get; set; } // студия
 
         public class Images
         {

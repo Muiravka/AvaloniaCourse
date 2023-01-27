@@ -15,7 +15,7 @@
     <vm:AnimeInfoPageVM/>
   </Design.DataContext>
 
-  <Grid ShowGridLines="True">
+  <Grid ShowGridLines="False">
     <Grid.ColumnDefinitions>
       <ColumnDefinition MaxWidth="400"/>
       <ColumnDefinition/>

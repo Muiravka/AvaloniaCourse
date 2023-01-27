@@ -159,8 +159,6 @@ namespace coursach.ViewModels
                     var messageBoxNoData = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Ошибка", "Нет выбранного аниме.");
                     messageBoxNoData.Show();
                 }
-                var animeID = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("айди", "Anime ID:" + obj.id);
-                animeID.Show();
             });
         }
         #endregion
